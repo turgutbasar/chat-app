@@ -1,0 +1,30 @@
+<!-- chat/templates/chat/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat App</title>
+</head>
+<body>
+    What is your name?<br>
+    <input id="user-name-input" type="text" size="100"><br>
+    <input id="join-chat-submit" type="button" value="Enter">
+
+    <script>
+        document.querySelector('#user-name-input').focus();
+
+        let submit_listener = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#join-chat-submit').click();
+            }
+        };
+
+        document.querySelector('#user-name-input').onkeyup = submit_listener;
+
+        document.querySelector('#join-chat-submit').onclick = function(e) {
+            let user_name = document.querySelector('#user-name-input').value;
+            window.location.href = '/chat/room?u=' + user_name;
+        };
+    </script>
+</body>
+</html>
